@@ -8,3 +8,14 @@
     return -- return back a value after the function is called and often this value is saved in a variable to be used and manipulated later.
     console.log only prints out the value.
 */
+
+
+//********* Verbal Questions********
+//Palindrome 
+const IsPalindrome = (string) => {
+    const LowerCaseString = string.toLowerCase();
+    const reversed = LowerCaseString.split().reverse().join('');
+   return (reversed === LowerCaseString)? true: false
+  }
+  
+console.log(IsPalindrome('apa'))
