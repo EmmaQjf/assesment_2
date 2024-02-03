@@ -43,3 +43,21 @@ const IsPrimeNumber = (integer) => {
   }
   
 console.log(IsPrimeNumber(4))
+
+//Calculate the Cube
+
+
+//Is it Vowel
+const IsVowel = (character) => {
+    vowels = ["a", "e", "i", "o", "u"]
+    return vowels.includes(character.toLowerCase()) ? true : false
+  }
+  
+console.log(IsVowel('e'))
+
+//GetTwoLengths
+const GetTwoLengths = (str1, str2) => {
+    return [str1.length, str2.length]
+  }
+  
+  console.log(GetTwoLengths("hello", "Emma"))
