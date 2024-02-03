@@ -84,3 +84,12 @@ const NeedleInTheHaystack = (arr) => {
   }
   
   console.log(NeedleInTheHaystack(['pizza', 'smoothie', 'burger', 'needle']))
+
+//Sum of Positives
+  const SumPositive = (arr) => {
+    const positives = arr.filter((num) => num > 0)
+    const sum = positives.reduce((total, num) => total + num, 0)
+    return sum
+  }
+  console.log(SumPositive([2,-2,5,7,-1]))
+  
