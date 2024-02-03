@@ -69,3 +69,10 @@ const MaxNumbers = (num1, num2, num3) => {
   }
   
 console.log(MaxNumbers(48, 55, 99))
+
+//Transmogrify the numbers
+const TransmogrifyNums = (num1, num2, num3) => {
+    return (num1 * num2) ** num3
+  }
+  
+  console.log(TransmogrifyNums(2, 3, 4))
