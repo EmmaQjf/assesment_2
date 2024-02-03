@@ -89,6 +89,15 @@ const TransmogrifyNums = (num1, num2, num3) => {
   
   console.log(TransmogrifyNums(2, 3, 4))
 
+//Print Longest Word
+function longer(string1, string2) {
+    return (string1.length >= string2.length) ? string1 : string2
+  }
+  const longestWord = (array) => {
+    return array.reduce(longer)
+  }
+console.log(longestWord(['I', "long", "we"]))
+
 //  Needle In The Haystack 
 const NeedleInTheHaystack = (arr) => {
     const indexOfNeedle = arr.indexOf('needle')
