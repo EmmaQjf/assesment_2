@@ -61,6 +61,12 @@ const IsVowel = (character) => {
   
 console.log(IsVowel('e'))
 
+//Get Multiple Lengths
+const GetLengths = (arr) => {
+    return arr.map((string) => string.length)
+  }
+console.log(GetLengths(['i', 'word', 'noodle']))
+
 //GetTwoLengths
 const GetTwoLengths = (str1, str2) => {
     return [str1.length, str2.length]
