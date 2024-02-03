@@ -45,6 +45,12 @@ const IsPrimeNumber = (integer) => {
 console.log(IsPrimeNumber(4))
 
 //Calculate the Cube
+const CalculateCube = (num) => {
+    return num * num * num
+  }
+  
+  console.log(CalculateCube(2))
+  
 
 
 //Is it Vowel
