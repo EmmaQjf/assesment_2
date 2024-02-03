@@ -61,3 +61,11 @@ const GetTwoLengths = (str1, str2) => {
   }
   
   console.log(GetTwoLengths("hello", "Emma"))
+
+//Maximum of Three numbers
+const MaxNumbers = (num1, num2, num3) => {
+    let array = [num1, num2, num3]
+    return Math.max(...array)
+  }
+  
+console.log(MaxNumbers(48, 55, 99))
