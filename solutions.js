@@ -76,3 +76,11 @@ const TransmogrifyNums = (num1, num2, num3) => {
   }
   
   console.log(TransmogrifyNums(2, 3, 4))
+
+//  Needle In The Haystack 
+const NeedleInTheHaystack = (arr) => {
+    const indexOfNeedle = arr.indexOf('needle')
+    return `The index of the needle is ${indexOfNeedle}`
+  }
+  
+  console.log(NeedleInTheHaystack(['pizza', 'smoothie', 'burger', 'needle']))
