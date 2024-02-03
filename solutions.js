@@ -31,3 +31,15 @@ const SumArray = (array) => {
   }
   
   console.log(SumArray([1, 2, 3, 4, 5]))
+
+
+// Prime numbers
+const IsPrimeNumber = (integer) => {
+    if (integer <= 1) return false;
+    for (let i = 2; i < integer; i++) {
+      if (integer % i === 0) return false
+    }
+    return true
+  }
+  
+console.log(IsPrimeNumber(4))
