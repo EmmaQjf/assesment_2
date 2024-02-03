@@ -19,3 +19,15 @@ const IsPalindrome = (string) => {
   }
   
 console.log(IsPalindrome('apa'))
+
+
+//Sum Array
+const SumArray = (array) => {
+    let sum = 0;
+    for (let element of array) {
+      sum += element
+    }
+    return sum
+  }
+  
+  console.log(SumArray([1, 2, 3, 4, 5]))
