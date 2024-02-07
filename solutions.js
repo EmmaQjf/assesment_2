@@ -98,6 +98,53 @@ function longer(string1, string2) {
   }
 console.log(longestWord(['I', "long", "we"]))
 
+
+//Project Euler Problem 2
+//// limit means how many fibanacci number we want to show/calculate
+const SumOfFibonacci = (limit) => {
+  let first = 0;
+  let second = 1;
+  let i = 1
+  let sum = 0
+   //if (limit == 1 || limit ==2) return 0
+  while (i <= limit) {
+    if (first % 2 === 0) {
+      sum = sum + first
+    }
+    let current = first + second;
+    first = second;
+    second = current;
+    i++;
+  }
+  return sum
+}
+
+/*
+limit means find all the fibanacci number within the limit
+
+const SumOfFibonacci = (limit) => {
+  let first = 0;
+  let second = 1;
+  let i = 2
+  let sum = 0
+  let array = [first, second]
+  if (limit === 2 || limit === 3) {
+    return 2;
+  }
+  while (i <= limit && limit > 3) {
+    array.push(array[i - 1] + array[i - 2])
+    if (array[i] % 2 === 0) {
+      sum = sum + array[i]
+    }
+    if (array[i] >= num) {
+      return sum
+    }
+    i++;
+  }
+}
+*/
+console.log(SumOfFibonacci(5))
+
 //  Needle In The Haystack 
 const NeedleInTheHaystack = (arr) => {
     const indexOfNeedle = arr.indexOf('needle')
