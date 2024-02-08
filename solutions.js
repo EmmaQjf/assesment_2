@@ -161,3 +161,92 @@ const NeedleInTheHaystack = (arr) => {
   }
   console.log(SumPositive([2,-2,5,7,-1]))
   
+
+
+
+  // ***** FREQUENCY COUNTER *********
+
+// **** questions 1: Valid Anagram
+// Check Lengths: If the two strings have different lengths, they cannot be anagrams, return false.
+// Create Frequency Counters: Initialize two objects to count the frequencies of each letter in both strings.
+// Populate the First Counter: Iterate through the first string, increasing the count for each letter in the corresponding object.
+// Populate the Second Counter: Iterate through the second string, doing the same.
+// Compare Counters: Iterate through one counter object, and for each letter, check if the letter exists in the second counter with the same frequency. If not, return false.
+// Return True: If all letters match in frequency, return true.
+function ValidAnagram(str1, str2) {
+  if (!str1.length == str2.length) { return false }
+  const fq = {}
+  for (let i = 0; i < str1.length; i++) {
+    let letter = str1[i]
+    fq[letter] ? fq[letter] += 1 : fq[letter] = 1
+    //
+  }
+  for (let i = 0; i < str2.length; i++) {
+    let letter = str2[i]
+    if (!fq[letter]) {
+      return false
+    } else {
+      fq[letter] -= 1
+    }
+  }
+  return true
+}
+
+console.log(ValidAnagram("apple", "elepa"))
+
+// ******Question 2: Same Frequency
+// solutions:
+// convert the numbers to string
+// check lengths: check the length of the string is not the same, return false
+// initiate a frequency counter by iterating over each digit of the first number.
+// populate the first number/string 
+// populate the second number and check whether the digit values are the same
+// return true if the frequencies match, otherwise return false.
+
+const IsSameFrequency = (num1, num2) => {
+  const str1 = num1.toString();
+  const str2 = num2.toString();
+  if (str1.length !== str2.length) {
+    return false;
+  }
+  let fc = {};
+  for (let i = 0; i < str1.length; i++) {
+    let digit = str1[i]
+    fc[digit] ? fc[digit] += 1 : fc[digit] = 1
+  }
+
+  for (let i = 0; i < str2.length; i++) {
+    let digit = str2[i]
+    if (!fc[digit]) {
+      return false
+    } else {
+      fc[digit] -= 1
+    }
+  }
+  return true
+}
+
+console.log(IsSameFrequency(182, 281))
+
+
+// ******Question 3: Are There Duplicates
+// solutions:
+// create frequency counter
+// populate the argument 
+// is the object.values is bigger than 1, there is duplicates
+// return trueif any duplicates are found, otherwise return false.
+
+const areThereDuplicates = (...args) => {
+  let fc = {}
+  for (let i = 0; i < args.length; i++) {
+    let arg = args[i]
+    fc[arg] ? fc[arg] += 1 : fc[arg] = 1
+    if (fc[arg] > 1) {
+      return true
+    }
+  }
+  return false
+}
+
+console.log(areThereDuplicates('ab', 'bcc', 'bcc', 'ab'))
+
