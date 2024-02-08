@@ -366,3 +366,102 @@ const findLongestSubstring = (str) => {
 console.log(findLongestSubstring('thisisawesome'))
 console.log(findLongestSubstring('thecatinthehat'))
 console.log(findLongestSubstring(''))
+
+
+// ******** multiple pointers 
+// Example: SumZero
+/*
+Solution Steps:
+
+Pointer Initialization: Initialize two pointers, one at the beginning of the array (left) and one at the end (right).
+Iterate with Condition: While the leftpointer is less than the rightpointer:
+
+Calculate Sum: Calculate the sum of the values at the two pointers.
+Sum Zero Check: If the sum is 0, return the pair of values as they are the first pair to sum to zero.
+Move Pointers Based on Sum:
+If the sum is less than 0, move the leftpointer up (increment) to increase the sum.
+If the sum is greater than 0, move the rightpointer down (decrement) to decrease the sum.
+No Pair Found: If the loop ends without finding a pair, return undefined.
+*/
+
+function SumZero(arr) {
+  let left = 0;
+      let right = arr.length - 1;
+
+      while (left < right) {
+          let sum = arr[left] + arr[right];
+          if (sum === 0) {
+              return [arr[left], arr[right]];
+          } else if (sum < 0) {
+              left++;
+          } else {
+              right--;
+          }
+      }
+
+      return undefined;
+}
+
+/*
+Question 1: Count Unique Values
+
+Solution steps:
+1. define an empty array and start  point
+2. loop through the array and move the start point
+3. if the array does not have the element arr[start], push into the array
+4 if the array has the element , skip and move to the next one
+5 return the array.length
+*/
+
+const countUniqueValues = (arr) => {
+  let start = 0;
+  let uniqueArr = [];
+  while (start < arr.length) {
+    if (!uniqueArr.includes(arr[start])) {
+      uniqueArr.push(arr[start])
+      start++
+    } else {
+      start++
+    }
+  }
+  return uniqueArr.length
+}
+
+
+console.log(countUniqueValues([1, 1, 1, 1, 1, 2]))
+console.log(countUniqueValues([1, 2, 3, 4, 4, 4, 7, 7, 12, 12, 13]))
+console.log(countUniqueValues([]))
+
+
+/*
+Question 2: Average Pair
+1.defineb left and right point
+2. iterate with condition: while the left pointer is less than right pointer
+  1)check the avarage of the values at the two pointers
+  2)if the average matches the given average, return true
+  3) move points based on Sum
+   if the average is smaller than the given average. move the left pointer to increase
+    if the average is greater than the given average. move the righter pointer to decrease
+
+3 no pair found, return false
+*/
+const averagePair = (arr, n) => {
+  let left = 0;
+  let right = arr.length - 1
+  while (left < right) {
+    if (arr[left] + arr[right] === n * 2) {
+      return true
+    } else if (arr[left] + arr[right] < n * 2) {
+      left++
+    } else {
+      right--
+    }
+  }
+  return false
+}
+
+console.log(averagePair([1, 2, 3], 2.5))
+console.log(averagePair([1, 3, 3, 5, 6, 7, 10, 12, 19], 8))
+console.log(averagePair([-1, 0, 3, 4, 5, 6], 4.1))
+console.log(averagePair([], 4))
+
