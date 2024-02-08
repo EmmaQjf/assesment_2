@@ -250,3 +250,76 @@ const areThereDuplicates = (...args) => {
 
 console.log(areThereDuplicates('ab', 'bcc', 'bcc', 'ab'))
 
+
+// ********Sliding Window*********
+
+// ****Example: MaxSubarraySum
+//solution:
+//edge case check  n > arr.length, return null
+//initial sum calculation  maxSum === -infinity
+//sliding the window 
+//      1) loop through the array,
+//      2) check the sum of the n elements, arr.slice(i.n+i)
+//       3) compare the sum with the maxSum, update maxSum
+// return maxSum 
+
+const MaxSubarraySum = (arr, n) => {
+  if (arr.length < n) return null;
+  let maxSum = -Infinity
+  let maxArray = []
+  for (let i = 0; i < arr.length; i++) {
+    let total = 0
+    arr.slice(i, i + n).forEach(num => {
+      total += num
+    })
+    if (total > maxSum) {
+       return maxSum = total;
+       return maxArray = arr.slice(i, i + n)
+    }
+  }
+  return [maxSum, [...maxArray]]
+}
+
+console.log(MaxSubarraySum([1, 2, 3, 4, 5, 1], 3))
+
+
+
+
+// ******Question 1: MinSubArrayLen
+// solutions
+// edge case, the sum of array is smaller than integer, return 0
+// loop though the array by length 1, 2, 3..(n)..
+// sliding window
+// 1) find a section of i : arr.slice(i,i+n)
+//   2) find the sum of the section : for each 
+//   3) compare the sum and the positive integer: return n if the sum is bigger than the positive integer
+// return false outside of the loop if no sum is bigger than the positive integer 
+
+// define two pointers of the array, minLength, and sum
+// expand the window by moving the end point, adding the value to the sum unitl the sum is greater or equal to the integar
+//Once the sum is greater than or equal to the target, try to shrink the window from the beginning to find the smallest subarray by moving the start pointer forward and subtracting values from the sum.
+//Update the minimum length each time a smaller subarray that satisfies the condition is found.
+//Return the minimum length if found; otherwise, return 0.
+
+function minSubArrayLen(arr, x) {
+  let start = 0;
+  let end = 0;
+  let n = arr.length
+  let minLength = n + 1
+  let sum = 0;
+  while (end <= n) {
+    if (sum < x) {
+      sum = sum + arr[end]
+      end++
+    } else if (sum >= x){
+      minLength = max.Min(minLength, end - start )
+      sum = sum - arr[start]
+      start ++
+    } else {
+      break;
+    }
+  }
+  return minLength = n + 1? 0: minLength;
+}
+
+console.log(minSubArrayLen([2, 3, 1, 2, 4, 0,1], 7))
