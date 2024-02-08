@@ -323,3 +323,46 @@ function minSubArrayLen(arr, x) {
 }
 
 console.log(minSubArrayLen([2, 3, 1, 2, 4, 0,1], 7))
+
+
+// *** FindLongestSubstring
+// the longest substring with all distinct characters
+//
+// findLongestSubstring('thisisawesome')should return 6.
+// change the string to the array
+//define the longestArray and subArray
+//define the start and end point
+// iterate through the array when the end point is less than the array length
+// if array does not include the character, push character into the new subArray and update the longestArray if the new subArray is longer, then move the end one forward
+//if array includes the character, find the index of the character and update the start point of the subArray and update the subArray by removing all the characters before the index and the character with slice. 
+//Return the longest length found.
+
+const findLongestSubstring = (str) => {
+  const array = str.split('')
+  let start = 0;
+  let longest = 0
+  let end = 0;
+  let subArray = []
+
+  while (end <= array.length) {
+    if (!subArray.includes(array[end])) {
+      subArray.push(array[end]);
+      if (subArray.length > longest) {
+        longest = subArray.length
+      }
+      end++
+    } else if (subArray.includes(array[end])) {
+      // if (subArray.length > longest) {
+      //   longest = subArray.length
+      // }
+      start = subArray.indexOf(array[end])
+      subArray = subArray.slice(start + 1)
+    } else {
+      break;
+    }
+  }
+  return longest
+}
+console.log(findLongestSubstring('thisisawesome'))
+console.log(findLongestSubstring('thecatinthehat'))
+console.log(findLongestSubstring(''))
