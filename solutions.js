@@ -465,3 +465,44 @@ console.log(averagePair([1, 3, 3, 5, 6, 7, 10, 12, 19], 8))
 console.log(averagePair([-1, 0, 3, 4, 5, 6], 4.1))
 console.log(averagePair([], 4))
 
+
+
+
+// ******** divide and conquer
+/*
+Question 2: Pow(x, n)
+solutions:
+1. edge case: if n equals to 0, return 1
+2. if n is negative, convert the n into -n and convert x to be 1/x
+3. Divide and Conquer: 
+   base case 
+  1) declare the base condition: if the n equals to 1, it should return the value of x
+   recursive 
+  2) declare two variables: one is left half of the n(use the Math.floor to deal with the fraction), the other is the right half of the n
+  3) make the recursive call for the left half of the n and recursive call for the right half of the n.
+*/
+
+const pow = (x, n) => {
+  if (n < 0) {
+    n = -1 * n
+    x = 1 / x
+  }
+  if (n == 0) {
+    return 1
+  }
+  if (n <= 1) {
+    return x
+  }
+
+  let leftHalf = Math.floor(n / 2)
+  let rightHalf = n - leftHalf
+
+  return pow(x, leftHalf) * pow(x, rightHalf)
+}
+
+
+
+console.log(pow(2, 10))
+console.log(pow(0, 0))
+console.log(pow(3, -2))
+console.log(pow(2, 2))
