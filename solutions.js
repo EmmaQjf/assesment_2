@@ -274,7 +274,7 @@ const MaxSubarraySum = (arr, n) => {
     })
     if (total > maxSum) {
        return maxSum = total;
-       return maxArray = arr.slice(i, i + n)
+       //return maxArray = arr.slice(i, i + n)
     }
   }
   return [maxSum, [...maxArray]]
@@ -406,7 +406,7 @@ function SumZero(arr) {
 Question 1: Count Unique Values
 
 Solution steps:
-1. define an empty array and start  point
+1. define an empty array and start point
 2. loop through the array and move the start point
 3. if the array does not have the element arr[start], push into the array
 4 if the array has the element , skip and move to the next one
@@ -469,6 +469,161 @@ console.log(averagePair([], 4))
 
 
 // ******** divide and conquer
+
+
+/*Question 1: Find First and Last Position of Element in Sorted Array
+
+find the first position of Element in sorted arry
+// 1.declare the left and right point varaibles 
+// 2.declare the middle 
+// 3.iterate the array while the left point is less or equal to the right point and compare the value in the middle with the target 
+//  1) if (mid value < target), left point = mid +1
+//  2) if (mid value> target), right point = mid -1
+// 3) if (mid value== target && arr[mid -1] == target), mid = mid -1 
+// 4) if (mid value== target && arr[mid -1] < target), return mid
+
+
+find the right position of Element in sorted arry
+// 1.declare the left and right point varaibles 
+// 2.declare the mid
+// 3.iterate the array while the left point is less or equal to the right point and compare the value in the middle with the target 
+//  1) if (mid value < target), left point = mid +1
+//  2) if (mid value> target), right point = mid -1
+// 3) if (mid value== target && arr[mid +1] == target), mid = mid +1 
+// 4) if (mid value== target && arr[mid +1] > target), return mid
+// 4 return -1 if no target is found in the array
+
+create a function to call the function to find the first position and the function to find the last position
+return the array[first position, right position] 
+*/
+
+/*
+const FirstPositon = (arr, target) => {
+  let left = 0;
+  let right = arr.length -1
+  let mid = Math.floor((left+right)/2)
+  let midValue = arr[mid]
+
+  while (left <= right) {
+    if (midValue < target) {
+      left = mid +1
+    } else if (midValue > target) {
+      right = mid -1
+    }else if (midValue == target && arr[mid -1] == target) {
+      right = right - 1
+      mid = mid -1
+    } else if (midValue == target && arr[mid -1] < target) {
+      return mid
+    }
+  }
+  return -1
+}
+
+const LastPositon = (arr, target) => {
+  let left = 0;
+  let right = arr.length -1
+  let mid = Math.floor((left+right)/2)
+  let midValue = arr[mid]
+
+  while (left <= right) {
+    if (midValue < target) {
+      left = mid +1
+    } else if (midValue > target) {
+      right = mid -1
+    }else if (midValue == target && arr[mid + 1] == target) {
+      left = left + 1
+      mid = mid + 1
+    } else if (midValue == target && arr[mid +1] > target) {
+      return mid
+    }
+  }
+  return -1
+}
+
+const findFirstAndLastPosition = (arr, target) => {
+   const left = FirstPositon (arr, target)
+  const right = LastPositon (arr, target)
+  return [left, right]
+}
+*/
+
+/*
+revised 
+find the first position of Element in sorted arry
+// 1.declare the left and right point varaibles 
+// 2.declare the middle 
+// 3.iterate the array while the left point is less or equal to the right point and compare the value in the middle with the target 
+//  1) if (mid value== target && arr[mid -1] < target), return mid
+//  2) if (mid value < target), left point = mid +1
+//  3) if (mid value> target), right point = mid -1
+// 
+
+
+
+find the right position of Element in sorted arry
+// 1.declare the left and right point varaibles 
+// 2.declare the mid
+// 3.iterate the array while the left point is less or equal to the right point and compare the value in the middle with the target 
+//  1) if (mid value== target && arr[mid +1] > target), return mid
+//  2)if (mid value < target), left point = mid +1
+//  3) if (mid value> target), right point = mid -1
+// 
+// 
+// 4 return -1 if no target is found in the array
+
+create a function to call the function to find the first position and the function to find the last position
+return the array[first position, right position] 
+*/
+const FirstPositon = (arr, target) => {
+  if(arr[0] === target) return 0;
+  let left = 0;
+  let right = arr.length -1
+  
+ 
+
+  while (left <= right) {
+    let mid = Math.floor((left+right)/2)
+    let midValue = arr[mid]
+    if (midValue == target && arr[mid -1] < target) {
+      return mid
+    } else if (midValue < target) {
+      left = mid +1
+    } else {
+      right = mid -1
+    }
+  }
+  return -1
+}
+
+const LastPositon = (arr, target) => {
+  if(arr[arr.length-1] === target) return arr.length;
+  let left = 0;
+  let right = arr.length -1
+
+
+
+  while (left <= right) {
+    let mid = Math.floor((left+right)/2)
+    let midValue = arr[mid]
+    if (midValue == target && arr[mid +1] > target) {
+      return mid
+    } else if (midValue < target) {
+      left = mid +1
+    } else  {
+      right = mid -1
+    }
+  }
+  return -1
+}
+
+const findFirstAndLastPosition = (arr, target) => {
+   const left = FirstPositon (arr, target)
+  const right = LastPositon (arr, target)
+  return [left, right]
+}
+
+
+console.log(findFirstAndLastPosition([5,7,7,8,8,10], 8))
 /*
 Question 2: Pow(x, n)
 solutions:
@@ -482,6 +637,12 @@ solutions:
   3) make the recursive call for the left half of the n and recursive call for the right half of the n.
 */
 
+/*
+revised 
+pseudo code 
+
+
+*/
 const pow = (x, n) => {
   if (n < 0) {
     n = -1 * n
@@ -501,8 +662,8 @@ const pow = (x, n) => {
 }
 
 
-
 console.log(pow(2, 10))
 console.log(pow(0, 0))
 console.log(pow(3, -2))
 console.log(pow(2, 2))
+
